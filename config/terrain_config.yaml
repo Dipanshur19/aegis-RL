@@ -1,0 +1,73 @@
+# Terrain Generation Configuration
+
+# Basic parameters
+num_nodes: 10
+graph_type: "erdos_renyi"  # Options: erdos_renyi, barabasi_albert, scale_free, tree
+edge_probability: 0.3  # For erdos_renyi
+attachment: 2  # For barabasi_albert
+
+# OS distribution (must sum to 1.0)
+os_distribution:
+  linux: 0.5
+  windows: 0.4
+  macos: 0.1
+
+# Role distribution (must sum to 1.0)
+role_distribution:
+  workstation: 0.5
+  server: 0.3
+  router: 0.1
+  firewall: 0.1
+
+# Vulnerability parameters
+vuln_density: 0.3  # Probability of vulnerability per service (0.0-1.0)
+max_vulns_per_node: 5
+
+# Credential parameters
+cred_density: 0.2  # Probability of credentials per node (0.0-1.0)
+max_creds_per_node: 3
+
+# Firewall parameters
+firewall_probability: 0.2
+
+# Network parameters
+ensure_connected: true  # Ensure graph is connected
+require_attack_path: true  # Ensure attack paths exist
+entry_points: 2  # Number of entry point nodes
+
+# Terrain presets
+presets:
+  # Small test terrain
+  small:
+    num_nodes: 5
+    graph_type: "erdos_renyi"
+    edge_probability: 0.4
+    vuln_density: 0.5
+
+  # Medium training terrain
+  medium:
+    num_nodes: 15
+    graph_type: "barabasi_albert"
+    attachment: 3
+    vuln_density: 0.3
+    entry_points: 3
+
+  # Large complex terrain
+  large:
+    num_nodes: 30
+    graph_type: "scale_free"
+    vuln_density: 0.2
+    firewall_probability: 0.4
+    entry_points: 5
+
+  # Hierarchical corporate network
+  corporate:
+    num_nodes: 20
+    graph_type: "tree"
+    role_distribution:
+      workstation: 0.6
+      server: 0.25
+      router: 0.1
+      firewall: 0.05
+    vuln_density: 0.25
+    cred_density: 0.3

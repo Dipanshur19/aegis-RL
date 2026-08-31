@@ -1,0 +1,29 @@
+# Core RL dependencies
+gymnasium>=0.29.0
+stable-baselines3>=2.2.0
+torch>=2.1.0
+numpy>=1.24.0
+
+# CyberBattleSim - Microsoft's cybersecurity simulation environment
+# Note: Install from GitHub since it's not on PyPI
+# git+https://github.com/microsoft/CyberBattleSim.git
+
+# Logging and visualization
+tensorboard>=2.15.0
+wandb>=0.16.0  # Optional: Advanced experiment tracking
+matplotlib>=3.7.0
+
+# Existing AUVAP dependencies
+openai>=1.0.0
+google-generativeai>=0.3.0
+sentence-transformers>=2.2.0
+pyyaml>=6.0
+
+# Data processing
+pandas>=2.0.0
+lxml>=4.9.0  # For parsing Nessus XML
+
+# Development and testing
+pytest>=7.4.0
+black>=23.0.0
+mypy>=1.5.0

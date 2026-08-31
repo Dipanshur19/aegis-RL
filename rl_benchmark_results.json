@@ -1,0 +1,42 @@
+{
+  "forward_pass": {
+    "mean": 0.00025593000013032,
+    "median": 0.00017285000649280846,
+    "stdev": 0.0006629102372872247,
+    "min": 0.00016450000111944973,
+    "max": 0.006812100007664412,
+    "throughput": 125034.18897239694
+  },
+  "action_selection": {
+    "mean": 0.0006956849999551196,
+    "median": 0.0003846000035991892,
+    "stdev": 0.0030487635742360584,
+    "actions_per_second": 1437.4321712621554
+  },
+  "gae_computation": {
+    "mean": 9.039700016728602e-05,
+    "median": 7.92499995441176e-05,
+    "stdev": 8.300861689078184e-05,
+    "episode_length": 100
+  },
+  "policy_update": {
+    "mean": 0.004223633999936282,
+    "median": 0.0036867500020889565,
+    "stdev": 0.0037878208017916603,
+    "updates_per_second": 236.76293921658126
+  },
+  "memory_usage": {
+    "agent_memory_mb": 0.02734375,
+    "trajectory_memory_mb": -0.15625,
+    "total_memory_mb": 291.79296875,
+    "trajectory_steps": 1000
+  },
+  "training_iteration": {
+    "rollout_mean": 0.10051768999983324,
+    "gae_mean": 0.00030049999913899227,
+    "update_mean": 0.022952570002235006,
+    "total_mean": 0.12377076000120724,
+    "episode_length": 200,
+    "iterations_per_minute": 484.767161479939
+  }
+}

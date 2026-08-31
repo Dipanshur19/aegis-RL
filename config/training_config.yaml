@@ -1,0 +1,88 @@
+# Training Configuration Presets
+
+# Quick Test Configuration (for debugging)
+quick_test:
+  total_timesteps: 10000
+  num_envs: 2
+  n_steps: 256
+  batch_size: 32
+  save_freq: 5000
+  eval_freq: 2500
+
+# Development Configuration (for iterating)
+development:
+  total_timesteps: 50000
+  num_envs: 4
+  n_steps: 1024
+  batch_size: 64
+  save_freq: 10000
+  eval_freq: 5000
+  learning_rate: 0.0005
+
+# Standard Training Configuration
+standard:
+  total_timesteps: 200000
+  num_envs: 8
+  n_steps: 2048
+  batch_size: 128
+  save_freq: 20000
+  eval_freq: 10000
+  learning_rate: 0.0003
+
+# Long Training Configuration (for best performance)
+long:
+  total_timesteps: 1000000
+  num_envs: 16
+  n_steps: 2048
+  batch_size: 256
+  save_freq: 50000
+  eval_freq: 25000
+  learning_rate: 0.0003
+  n_epochs: 15
+
+# Hyperparameter Tuning Configurations
+tuning:
+  # High exploration
+  high_exploration:
+    ent_coef: 0.05
+    learning_rate: 0.001
+    clip_range: 0.3
+
+  # Conservative (low exploration)
+  conservative:
+    ent_coef: 0.001
+    learning_rate: 0.0001
+    clip_range: 0.1
+
+  # Large batch
+  large_batch:
+    n_steps: 4096
+    batch_size: 512
+    n_epochs: 15
+
+  # Small batch (faster updates)
+  small_batch:
+    n_steps: 512
+    batch_size: 32
+    n_epochs: 5
+    learning_rate: 0.001
+
+# Environment-Specific Configurations
+environments:
+  # Simple network (few nodes)
+  simple:
+    max_steps: 50
+    max_nodes: 10
+    max_actions: 30
+
+  # Medium network
+  medium:
+    max_steps: 100
+    max_nodes: 20
+    max_actions: 100
+
+  # Large network (many nodes)
+  large:
+    max_steps: 200
+    max_nodes: 50
+    max_actions: 200

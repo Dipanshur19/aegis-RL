@@ -1,0 +1,422 @@
+[
+  {
+    "description": "Apache HTTP Server 2.4.49 Path Traversal allows remote attackers to read arbitrary files via crafted URI",
+    "title": "Apache HTTP Server 2.4.49 Path Traversal",
+    "service": "httpd",
+    "port": 80,
+    "cvss": 7.5,
+    "labels": {
+      "severity_bucket": "High",
+      "attack_vector": "Network",
+      "vuln_component": "Apache 2.4.49",
+      "automation_candidate": true,
+      "llm_confidence": 0.95
+    }
+  },
+  {
+    "description": "OpenSSH 7.4 user enumeration via timing attack allows remote attackers to determine valid usernames",
+    "title": "OpenSSH User Enumeration",
+    "service": "ssh",
+    "port": 22,
+    "cvss": 5.3,
+    "labels": {
+      "severity_bucket": "Medium",
+      "attack_vector": "Network",
+      "vuln_component": "OpenSSH 7.4",
+      "automation_candidate": true,
+      "llm_confidence": 0.88
+    }
+  },
+  {
+    "description": "SQL Server weak password policy allows brute force attacks on default sa account",
+    "title": "SQL Server Weak Authentication",
+    "service": "ms-sql-s",
+    "port": 1433,
+    "cvss": 6.5,
+    "labels": {
+      "severity_bucket": "Medium",
+      "attack_vector": "Network",
+      "vuln_component": "SQL Server 2016",
+      "automation_candidate": false,
+      "llm_confidence": 0.75
+    }
+  },
+  {
+    "description": "Remote code execution in Log4j via JNDI injection (Log4Shell CVE-2021-44228)",
+    "title": "Apache Log4j Remote Code Execution",
+    "service": "http",
+    "port": 8080,
+    "cvss": 10.0,
+    "labels": {
+      "severity_bucket": "Critical",
+      "attack_vector": "Network",
+      "vuln_component": "Log4j 2.14.1",
+      "automation_candidate": true,
+      "llm_confidence": 0.98
+    }
+  },
+  {
+    "description": "SMBv1 enabled - vulnerable to EternalBlue exploit (MS17-010)",
+    "title": "SMBv1 EternalBlue Vulnerability",
+    "service": "microsoft-ds",
+    "port": 445,
+    "cvss": 9.8,
+    "labels": {
+      "severity_bucket": "Critical",
+      "attack_vector": "Network",
+      "vuln_component": "Windows SMBv1",
+      "automation_candidate": true,
+      "llm_confidence": 0.97
+    }
+  },
+  {
+    "description": "SSL certificate expired - impacts trust but requires manual certificate renewal",
+    "title": "SSL Certificate Expired",
+    "service": "https",
+    "port": 443,
+    "cvss": 3.7,
+    "labels": {
+      "severity_bucket": "Low",
+      "attack_vector": "Network",
+      "vuln_component": "SSL/TLS Certificate",
+      "automation_candidate": false,
+      "llm_confidence": 0.92
+    }
+  },
+  {
+    "description": "Default credentials detected on Tomcat Manager interface (admin/admin)",
+    "title": "Tomcat Default Credentials",
+    "service": "http",
+    "port": 8080,
+    "cvss": 9.1,
+    "labels": {
+      "severity_bucket": "Critical",
+      "attack_vector": "Network",
+      "vuln_component": "Tomcat Manager",
+      "automation_candidate": true,
+      "llm_confidence": 0.96
+    }
+  },
+  {
+    "description": "FTP server allows anonymous login with write access to sensitive directories",
+    "title": "FTP Anonymous Write Access",
+    "service": "ftp",
+    "port": 21,
+    "cvss": 7.5,
+    "labels": {
+      "severity_bucket": "High",
+      "attack_vector": "Network",
+      "vuln_component": "ProFTPD 1.3.5",
+      "automation_candidate": true,
+      "llm_confidence": 0.89
+    }
+  },
+  {
+    "description": "Local privilege escalation via insecure file permissions on /etc/sudoers",
+    "title": "Insecure Sudoers File Permissions",
+    "service": "general",
+    "port": 0,
+    "cvss": 8.4,
+    "labels": {
+      "severity_bucket": "High",
+      "attack_vector": "Local",
+      "vuln_component": "Linux sudoers",
+      "automation_candidate": false,
+      "llm_confidence": 0.85
+    }
+  },
+  {
+    "description": "TLS 1.0 enabled - deprecated protocol with weak cryptographic algorithms",
+    "title": "Deprecated TLS 1.0 Enabled",
+    "service": "https",
+    "port": 443,
+    "cvss": 5.9,
+    "labels": {
+      "severity_bucket": "Medium",
+      "attack_vector": "Network",
+      "vuln_component": "TLS Configuration",
+      "automation_candidate": false,
+      "llm_confidence": 0.80
+    }
+  },
+  {
+    "description": "Directory listing enabled on web server exposes sensitive file structure",
+    "title": "Directory Listing Enabled",
+    "service": "http",
+    "port": 80,
+    "cvss": 5.3,
+    "labels": {
+      "severity_bucket": "Medium",
+      "attack_vector": "Network",
+      "vuln_component": "Apache 2.4",
+      "automation_candidate": true,
+      "llm_confidence": 0.82
+    }
+  },
+  {
+    "description": "Jenkins script console accessible without authentication - allows arbitrary code execution",
+    "title": "Jenkins Unauthenticated Script Console",
+    "service": "http",
+    "port": 8080,
+    "cvss": 9.8,
+    "labels": {
+      "severity_bucket": "Critical",
+      "attack_vector": "Network",
+      "vuln_component": "Jenkins 2.60",
+      "automation_candidate": true,
+      "llm_confidence": 0.97
+    }
+  },
+  {
+    "description": "Redis server running without authentication - allows remote data access and manipulation",
+    "title": "Redis Unauthenticated Access",
+    "service": "redis",
+    "port": 6379,
+    "cvss": 8.1,
+    "labels": {
+      "severity_bucket": "High",
+      "attack_vector": "Network",
+      "vuln_component": "Redis 5.0",
+      "automation_candidate": true,
+      "llm_confidence": 0.93
+    }
+  },
+  {
+    "description": "MongoDB configured with no authentication - full database access available remotely",
+    "title": "MongoDB No Authentication",
+    "service": "mongodb",
+    "port": 27017,
+    "cvss": 9.1,
+    "labels": {
+      "severity_bucket": "Critical",
+      "attack_vector": "Network",
+      "vuln_component": "MongoDB 3.6",
+      "automation_candidate": true,
+      "llm_confidence": 0.95
+    }
+  },
+  {
+    "description": "Nginx misconfiguration allows off-by-slash path traversal to access restricted files",
+    "title": "Nginx Path Traversal via Alias Misconfiguration",
+    "service": "http",
+    "port": 80,
+    "cvss": 7.5,
+    "labels": {
+      "severity_bucket": "High",
+      "attack_vector": "Network",
+      "vuln_component": "Nginx 1.18",
+      "automation_candidate": true,
+      "llm_confidence": 0.90
+    }
+  },
+  {
+    "description": "Docker API exposed without TLS authentication - allows container manipulation",
+    "title": "Docker API Exposed",
+    "service": "docker",
+    "port": 2375,
+    "cvss": 9.1,
+    "labels": {
+      "severity_bucket": "Critical",
+      "attack_vector": "Network",
+      "vuln_component": "Docker Engine",
+      "automation_candidate": true,
+      "llm_confidence": 0.94
+    }
+  },
+  {
+    "description": "Weak cipher suites in SSH configuration (CBC mode ciphers vulnerable to attacks)",
+    "title": "SSH Weak Cipher Suites",
+    "service": "ssh",
+    "port": 22,
+    "cvss": 4.3,
+    "labels": {
+      "severity_bucket": "Medium",
+      "attack_vector": "Network",
+      "vuln_component": "OpenSSH Configuration",
+      "automation_candidate": false,
+      "llm_confidence": 0.78
+    }
+  },
+  {
+    "description": "SNMP default community string 'public' allows information disclosure",
+    "title": "SNMP Default Community String",
+    "service": "snmp",
+    "port": 161,
+    "cvss": 5.3,
+    "labels": {
+      "severity_bucket": "Medium",
+      "attack_vector": "Network",
+      "vuln_component": "SNMP v2c",
+      "automation_candidate": true,
+      "llm_confidence": 0.87
+    }
+  },
+  {
+    "description": "Elasticsearch cluster accessible without authentication - data exposure and cluster manipulation possible",
+    "title": "Elasticsearch No Authentication",
+    "service": "http",
+    "port": 9200,
+    "cvss": 9.1,
+    "labels": {
+      "severity_bucket": "Critical",
+      "attack_vector": "Network",
+      "vuln_component": "Elasticsearch 6.8",
+      "automation_candidate": true,
+      "llm_confidence": 0.96
+    }
+  },
+  {
+    "description": "WordPress installation with outdated plugins vulnerable to SQL injection",
+    "title": "WordPress Plugin SQL Injection",
+    "service": "http",
+    "port": 80,
+    "cvss": 8.6,
+    "labels": {
+      "severity_bucket": "High",
+      "attack_vector": "Network",
+      "vuln_component": "WordPress Plugin",
+      "automation_candidate": true,
+      "llm_confidence": 0.91
+    }
+  },
+  {
+    "description": "X11 server accepting remote connections without authentication",
+    "title": "X11 Unauthenticated Remote Access",
+    "service": "x11",
+    "port": 6000,
+    "cvss": 7.5,
+    "labels": {
+      "severity_bucket": "High",
+      "attack_vector": "Network",
+      "vuln_component": "X11 Server",
+      "automation_candidate": true,
+      "llm_confidence": 0.88
+    }
+  },
+  {
+    "description": "phpMyAdmin accessible with default credentials allows full database control",
+    "title": "phpMyAdmin Default Credentials",
+    "service": "http",
+    "port": 80,
+    "cvss": 9.8,
+    "labels": {
+      "severity_bucket": "Critical",
+      "attack_vector": "Network",
+      "vuln_component": "phpMyAdmin 4.9",
+      "automation_candidate": true,
+      "llm_confidence": 0.97
+    }
+  },
+  {
+    "description": "NFS share exported with no_root_squash option allows privilege escalation",
+    "title": "NFS Insecure Export Configuration",
+    "service": "nfs",
+    "port": 2049,
+    "cvss": 8.1,
+    "labels": {
+      "severity_bucket": "High",
+      "attack_vector": "Network",
+      "vuln_component": "NFS Server",
+      "automation_candidate": false,
+      "llm_confidence": 0.83
+    }
+  },
+  {
+    "description": "Missing security headers (X-Frame-Options, CSP) increases clickjacking and XSS risk",
+    "title": "Missing Security Headers",
+    "service": "http",
+    "port": 443,
+    "cvss": 4.3,
+    "labels": {
+      "severity_bucket": "Medium",
+      "attack_vector": "Network",
+      "vuln_component": "Web Application",
+      "automation_candidate": false,
+      "llm_confidence": 0.72
+    }
+  },
+  {
+    "description": "Memcached server exposed to internet without authentication - amplification attack vector",
+    "title": "Memcached Exposed Without Authentication",
+    "service": "memcached",
+    "port": 11211,
+    "cvss": 7.5,
+    "labels": {
+      "severity_bucket": "High",
+      "attack_vector": "Network",
+      "vuln_component": "Memcached 1.5",
+      "automation_candidate": true,
+      "llm_confidence": 0.89
+    }
+  },
+  {
+    "description": "Struts2 remote code execution vulnerability (CVE-2017-5638) in Content-Type header parsing",
+    "title": "Apache Struts2 RCE",
+    "service": "http",
+    "port": 8080,
+    "cvss": 10.0,
+    "labels": {
+      "severity_bucket": "Critical",
+      "attack_vector": "Network",
+      "vuln_component": "Struts2 2.3.5",
+      "automation_candidate": true,
+      "llm_confidence": 0.98
+    }
+  },
+  {
+    "description": "Kubernetes API server exposed without proper RBAC - allows cluster-wide privilege escalation",
+    "title": "Kubernetes API Misconfiguration",
+    "service": "https",
+    "port": 6443,
+    "cvss": 9.8,
+    "labels": {
+      "severity_bucket": "Critical",
+      "attack_vector": "Network",
+      "vuln_component": "Kubernetes API",
+      "automation_candidate": false,
+      "llm_confidence": 0.86
+    }
+  },
+  {
+    "description": "Telnet service enabled with weak credentials - cleartext credential transmission",
+    "title": "Telnet Weak Credentials",
+    "service": "telnet",
+    "port": 23,
+    "cvss": 8.1,
+    "labels": {
+      "severity_bucket": "High",
+      "attack_vector": "Network",
+      "vuln_component": "Telnet Service",
+      "automation_candidate": true,
+      "llm_confidence": 0.90
+    }
+  },
+  {
+    "description": "RDP service allows Network Level Authentication bypass - brute force possible",
+    "title": "RDP NLA Bypass",
+    "service": "ms-wbt-server",
+    "port": 3389,
+    "cvss": 7.5,
+    "labels": {
+      "severity_bucket": "High",
+      "attack_vector": "Network",
+      "vuln_component": "Windows RDP",
+      "automation_candidate": false,
+      "llm_confidence": 0.81
+    }
+  },
+  {
+    "description": "Java RMI registry exposed - allows remote class loading and code execution",
+    "title": "Java RMI Registry Exposed",
+    "service": "java-rmi",
+    "port": 1099,
+    "cvss": 9.8,
+    "labels": {
+      "severity_bucket": "Critical",
+      "attack_vector": "Network",
+      "vuln_component": "Java RMI",
+      "automation_candidate": true,
+      "llm_confidence": 0.95
+    }
+  }
+]

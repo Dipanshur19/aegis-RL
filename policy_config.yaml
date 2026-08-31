@@ -1,0 +1,136 @@
+# AUVAP Policy Configuration
+# ===========================
+# Define organizational security policies for vulnerability filtering
+# 
+# Precedence levels:
+#   0 = User-level overrides (highest priority)
+#   1 = Organizational policy (security team rules)
+#   2 = Baseline/default rules (framework defaults)
+#
+# When multiple rules match, the first rule with highest precedence wins
+
+# User-level policies (precedence: 0)
+# Override organizational policies for specific cases
+user_policies:
+  - rule_id: USER-001
+    type: ignore
+    condition:
+      field: host_ip
+      operator: in
+      value: ["192.168.1.100", "10.0.0.5"]
+    reason: "Development/test hosts excluded by user"
+    precedence: 0
+
+  - rule_id: USER-002
+    type: force_manual
+    condition:
+      field: service
+      operator: contains
+      value: "database"
+    reason: "Database vulnerabilities require DBA review before automation"
+    precedence: 0
+
+  - rule_id: USER-003
+    type: ignore
+    condition:
+      field: port
+      operator: in
+      value: [33, 3000, 5000, 8000]
+    reason: "Custom development ports used by engineering team"
+    precedence: 0
+
+# Organization-level policies (precedence: 1)
+# Security team mandated rules
+org_policies:
+  - rule_id: ORG-001
+    type: ignore
+    condition:
+      field: port
+      operator: in
+      value: [8080]
+    reason: "Port 8080 is standard dev/staging port per InfoSec policy"
+    precedence: 1
+
+  - rule_id: ORG-002
+    type: prioritize
+    condition:
+      field: cve
+      operator: in
+      value: ["CVE-2021-44228", "CVE-2017-0144", "CVE-2020-1938"]
+    reason: "Critical CVEs requiring immediate attention per CISO directive"
+    precedence: 1
+
+  - rule_id: ORG-003
+    type: force_manual
+    condition:
+      field: title
+      operator: regex
+      value: "(?i)(kernel|privilege escalation|local.*root)"
+    reason: "Privilege escalation exploits require senior security analyst review"
+    precedence: 1
+
+  - rule_id: ORG-004
+    type: force_manual
+    condition:
+      field: service
+      operator: regex
+      value: "(?i)(ldap|activedirectory|ad|kerberos)"
+    reason: "Directory service vulnerabilities require identity team coordination"
+    precedence: 1
+
+  - rule_id: ORG-005
+    type: prioritize
+    condition:
+      field: title
+      operator: regex
+      value: "(?i)(remote code execution|rce|command injection)"
+    reason: "RCE vulnerabilities are high-priority per organizational risk framework"
+    precedence: 1
+
+  - rule_id: ORG-006
+    type: ignore
+    condition:
+      field: cvss
+      operator: lt
+      value: 4.0
+    reason: "Low-severity findings (CVSS < 4.0) deferred per risk acceptance policy"
+    precedence: 1
+
+# Baseline policies (precedence: 2)
+# Framework defaults that can be overridden by user or org policies
+baseline_policies:
+  - rule_id: BASE-001
+    type: ignore
+    condition:
+      field: cvss
+      operator: eq
+      value: 0.0
+    reason: "Informational findings with no security impact (CVSS 0.0)"
+    precedence: 2
+
+  - rule_id: BASE-002
+    type: ignore
+    condition:
+      field: severity_text
+      operator: regex
+      value: "(?i)^none$"
+    reason: "Findings with 'None' severity classification"
+    precedence: 2
+
+  - rule_id: BASE-003
+    type: force_manual
+    condition:
+      field: title
+      operator: regex
+      value: "(?i)(operating system|kernel)"
+    reason: "OS-level vulnerabilities require expert analysis before automation"
+    precedence: 2
+
+  - rule_id: BASE-004
+    type: prioritize
+    condition:
+      field: cvss
+      operator: gte
+      value: 9.0
+    reason: "Critical vulnerabilities (CVSS >= 9.0) are high-priority for automation"
+    precedence: 2

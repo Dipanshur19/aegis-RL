@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NessusClientData_v2>
+  <Policy>
+    <policyName>AUVAP Test Policy</policyName>
+  </Policy>
+  <Report name="AUVAP Sample Report (25 findings)">
+    <!-- Host 1: Ubuntu 20.04 LTS -->
+    <ReportHost name="10.0.1.5">
+      <HostProperties>
+        <tag name="HOST_START">Thu Oct 23 08:00:00 2025</tag>
+        <tag name="HOST_END">Thu Oct 23 08:05:00 2025</tag>
+        <tag name="operating-system">Linux - Ubuntu 20.04 LTS (Focal Fossa)</tag>
+        <tag name="host-ip">10.0.1.5</tag>
+        <tag name="hostname">web-01.local</tag>
+      </HostProperties>
+
+      <ReportItem port="8009" svc_name="ajp13" protocol="tcp" severity="4"
+                  pluginID="133798" pluginName="Apache Tomcat AJP File Read Vulnerability (Ghostcat)"
+                  pluginFamily="Web Servers">
+        <plugin_name>Apache Tomcat AJP File Read Vulnerability (Ghostcat)</plugin_name>
+        <description>Tomcat AJP file inclusion / arbitrary file read (Ghostcat).</description>
+        <solution>Upgrade Tomcat or disable AJP connector.</solution>
+        <risk_factor>Critical</risk_factor>
+        <cvss_base_score>9.8</cvss_base_score>
+        <cvss3_base_score>9.8</cvss3_base_score>
+        <cve>CVE-2020-1938</cve>
+        <plugin_output>Vulnerable AJP behavior observed on 8009/tcp.</plugin_output>
+      </ReportItem>
+
+      <ReportItem port="22" svc_name="ssh" protocol="tcp" severity="2"
+                  pluginID="10282" pluginName="SSH Server Supports Weak Algorithms" pluginFamily="SSH">
+        <plugin_name>SSH Server Supports Weak Algorithms</plugin_name>
+        <description>SSH allows legacy ciphers / MACs (arcfour, 3des-cbc, hmac-md5).</description>
+        <solution>Disable weak KEX/ciphers; use strong modern algorithms.</solution>
+        <risk_factor>Medium</risk_factor>
+        <cvss_base_score>5.3</cvss_base_score>
+        <plugin_output>arcfour / 3des-cbc offered.</plugin_output>
+      </ReportItem>
+
+      <ReportItem port="80" svc_name="http" protocol="tcp" severity="3"
+                  pluginID="152100" pluginName="Apache HTTP Path Traversal (CVE-2021-41773)"
+                  pluginFamily="Web Servers">
+        <plugin_name>Apache HTTP Path Traversal</plugin_name>
+        <description>Apache HTTP Server vulnerable to path traversal and file disclosure.</description>
+        <solution>Upgrade Apache HTTPD to a fixed version.</solution>
+        <risk_factor>High</risk_factor>
+        <cvss_base_score>7.5</cvss_base_score>
+        <cvss3_base_score>7.5</cvss3_base_score>
+        <cve>CVE-2021-41773</cve>
+        <plugin_output>PoC traversal request returned sensitive content.</plugin_output>
+      </ReportItem>
+
+      <ReportItem port="443" svc_name="https" protocol="tcp" severity="3"
+                  pluginID="159262" pluginName="OpenSSL SM2 Decryption Memory Corruption (CVE-2021-3711)"
+                  pluginFamily="General">
+        <plugin_name>OpenSSL Vulnerability</plugin_name>
+        <description>OpenSSL SM2 decryption buffer overflow.</description>
+        <solution>Update OpenSSL packages to fixed release.</solution>
+        <risk_factor>High</risk_factor>
+        <cvss_base_score>8.1</cvss_base_score>
+        <cvss3_base_score>8.1</cvss3_base_score>
+        <cve>CVE-2021-3711</cve>
+        <plugin_output>Server reports OpenSSL/1.1.1f vulnerable build.</plugin_output>
+      </ReportItem>
+
+      <ReportItem port="0" svc_name="general" protocol="tcp" severity="1"
+                  pluginID="110095" pluginName="Outdated OpenSSH Version Detected"
+                  pluginFamily="SSH">
+        <plugin_name>Outdated OpenSSH</plugin_name>
+        <description>The system runs an outdated OpenSSH version with known issues.</description>
+        <solution>Update OpenSSH to a supported version.</solution>
+        <risk_factor>Low</risk_factor>
+        <cvss_base_score>3.7</cvss_base_score>
+        <plugin_output>OpenSSH_7.2p2 detected.</plugin_output>
+      </ReportItem>
+    </ReportHost>
+
+    <!-- Host 2: Windows Server 2016 -->
+    <ReportHost name="10.0.1.7">
+      <HostProperties>
+        <tag name="HOST_START">Thu Oct 23 08:01:00 2025</tag>
+        <tag name="HOST_END">Thu Oct 23 08:06:00 2025</tag>
+        <tag name="operating-system">Microsoft Windows Server 2016 Standard (10.0.14393)</tag>
+        <tag name="host-ip">10.0.1.7</tag>
+        <tag name="hostname">fileserver-01.local</tag>
+      </HostProperties>
+
+      <ReportItem port="445" svc_name="smb" protocol="tcp" severity="4"
+                  pluginID="97106" pluginName="MS17-010: Security Update for Microsoft Windows SMB Server (4013389)"
+                  pluginFamily="Windows : Microsoft Bulletins">
+        <plugin_name>MS17-010 SMB Remote Code Execution</plugin_name>
+        <description>Remote code execution in SMBv1 (EternalBlue).</description>
+        <solution>Apply Microsoft security update MS17-010.</solution>
+        <risk_factor>Critical</risk_factor>
+        <cvss_base_score>8.1</cvss_base_score>
+        <cvss3_base_score>8.1</cvss3_base_score>
+        <cve>CVE-2017-0144</cve>
+        <plugin_output>SMBv1 enabled; patch level suggests missing MS17-010.</plugin_output>
+      </ReportItem>
+
+      <ReportItem port="445" svc_name="smb" protocol="tcp" severity="3"
+                  pluginID="57608" pluginName="SMB Signing not required"
+                  pluginFamily="Windows">
+        <plugin_name>SMB Signing not required</plugin_name>
+        <description>Server does not require SMB message signing.</description>
+        <solution>Enable SMB signing as required.</solution>
+        <risk_factor>High</risk_factor>
+        <cvss_base_score>5.0</cvss_base_score>
+        <plugin_output>Signing: supported but not required.</plugin_output>
+      </ReportItem>
+
+      <ReportItem port="3389" svc_name="rdp" protocol="tcp" severity="2"
+                  pluginID="11026" pluginName="RDP Weak Encryption"
+                  pluginFamily="Windows">
+        <plugin_name>RDP Weak Encryption</plugin_name>
+        <description>RDP configured with weak security layer / legacy protocols.</description>
+        <solution>Require Network Level Authentication and strong encryption.</solution>
+        <risk_factor>Medium</risk_factor>
+        <cvss_base_score>5.0</cvss_base_score>
+        <plugin_output>Security layer: RDP, NLA: disabled.</plugin_output>
+      </ReportItem>
+
+      <ReportItem port="80" svc_name="http" protocol="tcp" severity="4"
+                  pluginID="91572" pluginName="Microsoft IIS WebDAV ScStoragePathFromUrl Buffer Overflow (CVE-2017-7269)"
+                  pluginFamily="Windows">
+        <plugin_name>IIS WebDAV Buffer Overflow</plugin_name>
+        <description>Buffer overflow in IIS WebDAV ScStoragePathFromUrl.</description>
+        <solution>Apply Microsoft updates / disable WebDAV if not needed.</solution>
+        <risk_factor>Critical</risk_factor>
+        <cvss_base_score>7.5</cvss_base_score>
+        <cvss3_base_score>7.5</cvss3_base_score>
+        <cve>CVE-2017-7269</cve>
+        <plugin_output>HEAD /… request triggered abnormal response.</plugin_output>
+      </ReportItem>
+
+      <ReportItem port="0" svc_name="general" protocol="tcp" severity="1"
+                  pluginID="121010" pluginName="LLMNR/NBT-NS Poisoning Susceptibility"
+                  pluginFamily="Windows">
+        <plugin_name>LLMNR/NBT-NS Poisoning</plugin_name>
+        <description>System responds to LLMNR/NBT-NS, enabling credential relay risks.</description>
+        <solution>Disable LLMNR / NBT-NS where not required.</solution>
+        <risk_factor>Low</risk_factor>
+        <cvss_base_score>3.1</cvss_base_score>
+        <plugin_output>LLMNR enabled by default.</plugin_output>
+      </ReportItem>
+    </ReportHost>
+
+    <!-- Host 3: Debian 11 -->
+    <ReportHost name="10.0.1.9">
+      <HostProperties>
+        <tag name="HOST_START">Thu Oct 23 08:02:00 2025</tag>
+        <tag name="HOST_END">Thu Oct 23 08:06:30 2025</tag>
+        <tag name="operating-system">Linux - Debian 11 (Bullseye)</tag>
+        <tag name="host-ip">10.0.1.9</tag>
+        <tag name="hostname">db-01.local</tag>
+      </HostProperties>
+
+      <ReportItem port="5432" svc_name="postgres" protocol="tcp" severity="2"
+                  pluginID="11028" pluginName="PostgreSQL Unsupported Version Detection"
+                  pluginFamily="Databases">
+        <plugin_name>PostgreSQL Unsupported Version</plugin_name>
+        <description>Running a PostgreSQL version that is end-of-life.</description>
+        <solution>Upgrade to a supported PostgreSQL release.</solution>
+        <risk_factor>Medium</risk_factor>
+        <cvss_base_score>5.0</cvss_base_score>
+        <plugin_output>PostgreSQL 9.6 reported.</plugin_output>
+      </ReportItem>
+
+      <ReportItem port="3306" svc_name="mysql" protocol="tcp" severity="1"
+                  pluginID="11817" pluginName="MySQL Server Ready for Authentication Without SSL"
+                  pluginFamily="Databases">
+        <plugin_name>MySQL Without SSL</plugin_name>
+        <description>MySQL accepts non-SSL connections that may expose credentials.</description>
+        <solution>Require TLS for MySQL connections.</solution>
+        <risk_factor>Low</risk_factor>
+        <cvss_base_score>3.7</cvss_base_score>
+        <plugin_output>--ssl not enforced.</plugin_output>
+      </ReportItem>
+
+      <ReportItem port="443" svc_name="https" protocol="tcp" severity="3"
+                  pluginID="159262" pluginName="OpenSSL SM2 Decryption Memory Corruption (CVE-2021-3711)"
+                  pluginFamily="General">
+        <plugin_name>OpenSSL Vulnerability</plugin_name>
+        <description>OpenSSL SM2 decryption buffer overflow.</description>
+        <solution>Update OpenSSL packages to fixed release.</solution>
+        <risk_factor>High</risk_factor>
+        <cvss_base_score>8.1</cvss_base_score>
+        <cvss3_base_score>8.1</cvss3_base_score>
+        <cve>CVE-2021-3711</cve>
+        <plugin_output>OpenSSL/1.1.1k detected.</plugin_output>
+      </ReportItem>
+
+      <ReportItem port="22" svc_name="ssh" protocol="tcp" severity="2"
+                  pluginID="70658" pluginName="OpenSSH User Enumeration Timing"
+                  pluginFamily="SSH">
+        <plugin_name>OpenSSH User Enumeration</plugin_name>
+        <description>SSH timing differences may allow user enumeration.</description>
+        <solution>Harden SSH configuration; consider patches that normalize responses.</solution>
+        <risk_factor>Medium</risk_factor>
+        <cvss_base_score>4.3</cvss_base_score>
+        <plugin_output>Timing variance observed.</plugin_output>
+      </ReportItem>
+
+      <ReportItem port="0" svc_name="general" protocol="tcp" severity="0"
+                  pluginID="45590" pluginName="TLS POODLE Not Vulnerable (Informational)"
+                  pluginFamily="General">
+        <plugin_name>TLS POODLE Not Vulnerable</plugin_name>
+        <description>Informational: Server does not support SSLv3.</description>
+        <solution>None required.</solution>
+        <risk_factor>None</risk_factor>
+        <cvss_base_score>0.0</cvss_base_score>
+        <plugin_output>SSLv3 disabled.</plugin_output>
+      </ReportItem>
+    </ReportHost>
+
+    <!-- Host 4: CentOS 7 -->
+    <ReportHost name="10.0.1.11">
+      <HostProperties>
+        <tag name="HOST_START">Thu Oct 23 08:03:00 2025</tag>
+        <tag name="HOST_END">Thu Oct 23 08:07:00 2025</tag>
+        <tag name="operating-system">Linux - CentOS Linux release 7.9 (Core)</tag>
+        <tag name="host-ip">10.0.1.11</tag>
+        <tag name="hostname">app-01.local</tag>
+      </HostProperties>
+
+      <ReportItem port="8080" svc_name="http" protocol="tcp" severity="4"
+                  pluginID="119006" pluginName="Jenkins Multiple Vulnerabilities (CVE-2018-1000861)"
+                  pluginFamily="Web Servers">
+        <plugin_name>Jenkins RCE / Deserialization</plugin_name>
+        <description>Jenkins vulnerable to multiple issues leading to RCE.</description>
+        <solution>Upgrade Jenkins to a fixed version.</solution>
+        <risk_factor>Critical</risk_factor>
+        <cvss_base_score>9.8</cvss_base_score>
+        <cvss3_base_score>9.8</cvss3_base_score>
+        <cve>CVE-2018-1000861</cve>
+        <plugin_output>Unauthenticated endpoint responded as vulnerable.</plugin_output>
+      </ReportItem>
+
+      <ReportItem port="80" svc_name="http" protocol="tcp" severity="3"
+                  pluginID="79207" pluginName="Shellshock (CVE-2014-6271)"
+                  pluginFamily="CGI abuses">
+        <plugin_name>GNU Bash Environment Variable Command Injection</plugin_name>
+        <description>Header injection may lead to code execution in CGI context.</description>
+        <solution>Update bash packages and patch CGI scripts.</solution>
+        <risk_factor>High</risk_factor>
+        <cvss_base_score>9.8</cvss_base_score>
+        <cvss3_base_score>9.8</cvss3_base_score>
+        <cve>CVE-2014-6271</cve>
+        <plugin_output>/cgi-bin/test responded to crafted header.</plugin_output>
+      </ReportItem>
+
+      <ReportItem port="0" svc_name="general" protocol="tcp" severity="2"
+                  pluginID="70658" pluginName="HTTP TRACE Method Enabled"
+                  pluginFamily="Web Servers">
+        <plugin_name>HTTP TRACE Enabled</plugin_name>
+        <description>TRACE method enabled can aid cross-site tracing attacks.</description>
+        <solution>Disable TRACE method on the web server.</solution>
+        <risk_factor>Medium</risk_factor>
+        <cvss_base_score>4.3</cvss_base_score>
+        <plugin_output>TRACE / returned 200 OK.</plugin_output>
+      </ReportItem>
+
+      <ReportItem port="25" svc_name="smtp" protocol="tcp" severity="1"
+                  pluginID="10263" pluginName="SMTP Open Relay (Test)"
+                  pluginFamily="SMTP problems">
+        <plugin_name>SMTP Open Relay</plugin_name>
+        <description>Server appears to allow mail relaying to external domains.</description>
+        <solution>Restrict relaying to authorized senders.</solution>
+        <risk_factor>Low</risk_factor>
+        <cvss_base_score>5.0</cvss_base_score>
+        <plugin_output>Relaying attempt succeeded in test mode.</plugin_output>
+      </ReportItem>
+
+      <ReportItem port="0" svc_name="general" protocol="tcp" severity="0"
+                  pluginID="42411" pluginName="HTTP Strict-Transport-Security Not Enforced (Info)"
+                  pluginFamily="Web Servers">
+        <plugin_name>HSTS Not Enforced (Info)</plugin_name>
+        <description>Informational: HSTS header not present.</description>
+        <solution>Consider enabling HSTS for user-facing sites.</solution>
+        <risk_factor>None</risk_factor>
+        <cvss_base_score>0.0</cvss_base_score>
+        <plugin_output>No HSTS header in response.</plugin_output>
+      </ReportItem>
+    </ReportHost>
+
+    <!-- Host 5: Windows 10 21H2 -->
+    <ReportHost name="10.0.1.13">
+      <HostProperties>
+        <tag name="HOST_START">Thu Oct 23 08:03:30 2025</tag>
+        <tag name="HOST_END">Thu Oct 23 08:07:15 2025</tag>
+        <tag name="operating-system">Microsoft Windows 10 Pro 21H2 (10.0.19044)</tag>
+        <tag name="host-ip">10.0.1.13</tag>
+        <tag name="hostname">win10-01.local</tag>
+      </HostProperties>
+
+      <ReportItem port="445" svc_name="smb" protocol="tcp" severity="3"
+                  pluginID="26920" pluginName="SMBv1 Enabled (Microsoft Windows)"
+                  pluginFamily="Windows">
+        <plugin_name>SMBv1 Enabled</plugin_name>
+        <description>SMBv1 protocol is enabled and should be disabled.</description>
+        <solution>Disable SMBv1 via Features or registry/policy.</solution>
+        <risk_factor>High</risk_factor>
+        <cvss_base_score>6.5</cvss_base_score>
+        <plugin_output>SMBv1: enabled.</plugin_output>
+      </ReportItem>
+
+      <ReportItem port="139" svc_name="netbios-ssn" protocol="tcp" severity="2"
+                  pluginID="10150" pluginName="NetBIOS/SMB NULL Session Authentication"
+                  pluginFamily="Windows">
+        <plugin_name>NULL Session</plugin_name>
+        <description>Server may allow NULL sessions which can leak info.</description>
+        <solution>Disable NULL sessions; enforce authentication.</solution>
+        <risk_factor>Medium</risk_factor>
+        <cvss_base_score>5.0</cvss_base_score>
+        <plugin_output>Anonymous connection partially succeeded.</plugin_output>
+      </ReportItem>
+
+      <ReportItem port="3389" svc_name="rdp" protocol="tcp" severity="2"
+                  pluginID="11026" pluginName="RDP Weak Encryption"
+                  pluginFamily="Windows">
+        <plugin_name>RDP Weak Encryption</plugin_name>
+        <description>RDP configured with weak security layer / legacy protocols.</description>
+        <solution>Enable NLA, TLS 1.2+, and CredSSP updates.</solution>
+        <risk_factor>Medium</risk_factor>
+        <cvss_base_score>5.0</cvss_base_score>
+        <plugin_output>NLA disabled; TLS fallback observed.</plugin_output>
+      </ReportItem>
+
+      <ReportItem port="0" svc_name="general" protocol="tcp" severity="1"
+                  pluginID="90033" pluginName="Windows AutoRun Enabled"
+                  pluginFamily="Windows">
+        <plugin_name>AutoRun Enabled</plugin_name>
+        <description>AutoRun may automatically execute media content.</description>
+        <solution>Disable AutoRun via Group Policy.</solution>
+        <risk_factor>Low</risk_factor>
+        <cvss_base_score>3.1</cvss_base_score>
+        <plugin_output>HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer</plugin_output>
+      </ReportItem>
+
+      <ReportItem port="0" svc_name="general" protocol="tcp" severity="0"
+                  pluginID="19506" pluginName="Nessus Scan Information"
+                  pluginFamily="Settings">
+        <plugin_name>Nessus Scan Information</plugin_name>
+        <description>Informational plugin describing the scan.</description>
+        <solution>None.</solution>
+        <risk_factor>None</risk_factor>
+        <cvss_base_score>0.0</cvss_base_score>
+        <plugin_output>Scan policy: AUVAP Test Policy.</plugin_output>
+      </ReportItem>
+    </ReportHost>
+
+  </Report>
+</NessusClientData_v2>

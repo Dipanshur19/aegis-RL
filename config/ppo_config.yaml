@@ -1,0 +1,136 @@
+# PPO Training Configuration for AUVAP-CyberBattleSim Integration
+
+# Environment Configuration
+environment:
+  max_steps: 100
+  reward_success: 10.0
+  reward_failure: -1.0
+  reward_step: -0.1
+  use_risk_score_reward: true
+  normalize_observations: true
+
+# PPO Hyperparameters
+ppo:
+  # Learning rate (can be float or schedule)
+  learning_rate: 0.0003
+
+  # Number of steps to collect per environment before updating
+  n_steps: 2048
+
+  # Minibatch size for optimization
+  batch_size: 64
+
+  # Number of epochs when optimizing the surrogate loss
+  n_epochs: 10
+
+  # Discount factor (gamma)
+  gamma: 0.99
+
+  # GAE lambda for advantage calculation
+  gae_lambda: 0.95
+
+  # Clipping parameter for PPO
+  clip_range: 0.2
+
+  # Clipping parameter for value function (None = no clipping)
+  clip_range_vf: null
+
+  # Entropy coefficient for exploration
+  ent_coef: 0.01
+
+  # Value function coefficient
+  vf_coef: 0.5
+
+  # Maximum norm for gradient clipping
+  max_grad_norm: 0.5
+
+  # Use Generalized Advantage Estimation
+  use_gae: true
+
+  # Target KL divergence for early stopping (None = no early stopping)
+  target_kl: null
+
+# Training Configuration
+training:
+  # Total number of training timesteps
+  total_timesteps: 100000
+
+  # Number of parallel environments
+  num_envs: 4
+
+  # Random seed for reproducibility
+  seed: 42
+
+  # Log interval (in episodes)
+  log_interval: 10
+
+  # Save checkpoint frequency (in timesteps)
+  save_freq: 20000
+
+  # Evaluation frequency (in timesteps)
+  eval_freq: 10000
+
+  # Number of evaluation episodes
+  n_eval_episodes: 10
+
+  # Use deterministic actions for evaluation
+  eval_deterministic: true
+
+# Network Architecture
+network:
+  # Policy type: "MlpPolicy", "CnnPolicy", or custom
+  policy_type: "MlpPolicy"
+
+  # Policy network architecture (list of layer sizes)
+  policy_layers: [256, 256]
+
+  # Value network architecture (list of layer sizes)
+  value_layers: [256, 256]
+
+  # Activation function: "tanh", "relu", "elu", "leaky_relu"
+  activation_fn: "tanh"
+
+# Observation Space Configuration
+observation:
+  max_nodes: 20
+  max_vulns_per_node: 10
+  include_network_topology: true
+  include_vuln_features: true
+  include_temporal_features: true
+  normalize: true
+
+# Action Space Configuration
+action:
+  max_actions: 100
+
+# Reward Shaping Configuration
+reward:
+  success_reward: 10.0
+  failure_penalty: -1.0
+  step_penalty: -0.1
+  use_risk_shaping: true
+  risk_weight: 0.5
+  critical_node_bonus: 5.0
+  discovery_reward: 0.5
+  lateral_movement_bonus: 2.0
+
+# Paths
+paths:
+  save_dir: "./checkpoints"
+  log_dir: "./logs"
+  tensorboard_log: "./logs/tensorboard"
+
+# Advanced Options
+advanced:
+  # Use SubprocVecEnv (True) or DummyVecEnv (False)
+  use_subproc_env: true
+
+  # Normalize observations using running mean/std
+  normalize_obs: false
+
+  # Normalize rewards using running mean/std
+  normalize_rewards: false
+
+  # Number of gradient descent steps per policy update
+  # (None = use n_epochs * (n_steps * n_envs // batch_size))
+  optimization_steps: null

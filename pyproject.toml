@@ -1,0 +1,154 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aegis-rl"
+version = "1.0.0"
+description = "Aegis-RL: Autonomous Exploit Generation & Intelligent Security with Reinforcement Learning"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+authors = [
+    {name = "Dipanshu Raj", email = "c3ihub@example.com"},
+]
+keywords = [
+    "cybersecurity",
+    "reinforcement-learning",
+    "penetration-testing",
+    "vulnerability-assessment",
+    "ppo",
+    "llm",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Topic :: Security",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+]
+
+dependencies = [
+    # Core RL
+    "gymnasium>=0.29.0",
+    "torch>=2.1.0",
+    "numpy>=1.24.0",
+    "stable-baselines3>=2.2.0",
+
+    # Graph / terrain generation
+    "networkx>=3.0",
+
+    # LLM providers
+    "openai>=1.0.0",
+    "google-genai>=0.3.0",
+
+    # Data & config
+    "pyyaml>=6.0",
+    "lxml>=4.9.0",
+
+    # Logging & visualisation
+    "tensorboard>=2.15.0",
+    "matplotlib>=3.7.0",
+]
+
+[project.optional-dependencies]
+# Few-shot learning (requires larger download)
+fewshot = [
+    "sentence-transformers>=2.2.0",
+    "tf-keras",
+]
+# Experiment tracking
+tracking = [
+    "wandb>=0.16.0",
+]
+# Data analysis
+analysis = [
+    "pandas>=2.0.0",
+]
+# Development & testing
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "black>=23.0.0",
+    "mypy>=1.5.0",
+    "ruff>=0.1.0",
+]
+# Everything
+all = [
+    "aegis-rl[fewshot,tracking,analysis,dev]",
+]
+
+[project.urls]
+Repository = "https://github.com/c3ihub/aegis-rl"
+
+[project.scripts]
+aegis-assess = "experiment:main"
+auvap-assess = "experiment:main"
+
+# ---------------------------------------------------------------------------
+# Setuptools package discovery
+# ---------------------------------------------------------------------------
+[tool.setuptools.packages.find]
+include = [
+    "ppo*",
+    "environment*",
+    "execution*",
+    "training*",
+    "benchmarks*",
+    "scripts*",
+    "tests*",
+]
+
+# Also include the top-level modules (parser.py, classifier_v2.py, etc.)
+[tool.setuptools]
+py-modules = [
+    "parser",
+    "classifier_v2",
+    "experiment",
+    "exploit_generator",
+    "feasibility_filter",
+    "policy_engine",
+    "policy_loader",
+    "task_manager",
+    "cvss_calculator",
+    "phase3_enhancements",
+    "priority_masking",
+    "build_knowledge_graph",
+    "check_rate_limit",
+]
+
+# ---------------------------------------------------------------------------
+# Tool configuration
+# ---------------------------------------------------------------------------
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+
+[tool.black]
+line-length = 120
+target-version = ["py310"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP"]
+ignore = ["E501"]  # line length handled by formatter
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = false
+warn_unused_configs = true
+ignore_missing_imports = true
+check_untyped_defs = false
+disallow_untyped_defs = false
+no_strict_optional = true
