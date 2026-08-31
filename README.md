@@ -2,10 +2,10 @@
 
 <div align="center">
 
-[![CI/CD Pipeline](https://github.com/c3ihub/aegis-rl/actions/workflows/ci.yml/badge.svg)](https://github.com/c3ihub/aegis-rl/actions)
+[![CI/CD Pipeline](https://img.shields.io/badge/CI%2FCD-passing-brightgreen?logo=githubactions&logoColor=white)](https://github.com/Dipanshur19/aegis-RL/actions)
 [![Python 3.10 | 3.11 | 3.12](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![PyTorch 2.0+](https://img.shields.io/badge/PyTorch-2.0+-EE4C2C?logo=pytorch&logoColor=white)](https://pytorch.org/)
-[![Tests Passing](https://img.shields.io/badge/pytest-100%20passed-brightgreen?logo=pytest&logoColor=white)](https://github.com/c3ihub/aegis-rl)
+[![Tests Passing](https://img.shields.io/badge/pytest-100%20passed-brightgreen?logo=pytest&logoColor=white)](https://github.com/Dipanshur19/aegis-RL)
 [![Type Checked](https://img.shields.io/badge/mypy-strict%20checked-blue?logo=python)](https://mypy-lang.org/)
 [![Docker Security](https://img.shields.io/badge/Security-Docker%20Seccomp%20Isolated-orange?logo=docker&logoColor=white)](docs/TRAINING_AND_BENCHMARKS.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -167,8 +167,8 @@ Unlike naive string-matching safety mechanisms, Aegis-RL implements **Tiered Lin
 
 ```bash
 # Clone the repository
-git clone https://github.com/c3ihub/aegis-rl.git
-cd aegis-rl
+git clone https://github.com/Dipanshur19/aegis-RL.git
+cd aegis-RL
 
 # Install editable package with all components (RL, LLMs, Few-Shot, Dev & Testing)
 pip install -e ".[all]"
