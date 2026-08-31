@@ -51,6 +51,10 @@ dependencies = [
     # Data & config
     "pyyaml>=6.0",
     "lxml>=4.9.0",
+    "requests>=2.28.0",
+
+    # Sandboxing & Execution
+    "docker>=6.0.0",
 
     # Logging & visualisation
     "tensorboard>=2.15.0",

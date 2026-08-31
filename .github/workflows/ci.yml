@@ -70,4 +70,5 @@ jobs:
         run: |
           pytest tests/ -v --tb=short
         env:
+          PYTHONPATH: .
           PYTHONDONTWRITEBYTECODE: 1
