@@ -46,7 +46,7 @@ dependencies = [
 
     # LLM providers
     "openai>=1.0.0",
-    "google-genai>=0.3.0",
+    "google-generativeai>=0.3.0",
 
     # Data & config
     "pyyaml>=6.0",
@@ -81,7 +81,15 @@ dev = [
 ]
 # Everything
 all = [
-    "aegis-rl[fewshot,tracking,analysis,dev]",
+    "sentence-transformers>=2.2.0",
+    "tf-keras",
+    "wandb>=0.16.0",
+    "pandas>=2.0.0",
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "black>=23.0.0",
+    "mypy>=1.5.0",
+    "ruff>=0.1.0",
 ]
 
 [project.urls]
