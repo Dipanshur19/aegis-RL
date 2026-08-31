@@ -12,7 +12,7 @@ permissions:
 jobs:
   # ── Code Quality & Typing ────────────────────────────────────────────────
   lint:
-    name: Lint & Type Check (Mypy + Ruff)
+    name: Lint & Type Check (Mypy)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -25,20 +25,13 @@ jobs:
       - name: Install dependencies & lint tools
         run: |
           python -m pip install --upgrade pip
+          pip install --extra-index-url https://download.pytorch.org/whl/cpu torch
           pip install -r requirements.txt
-          pip install ruff black mypy
+          pip install mypy types-PyYAML
 
       - name: Mypy (strict type checking)
         run: |
           python -m mypy --config-file pyproject.toml parser.py policy_engine.py policy_loader.py task_manager.py feasibility_filter.py ppo/ppo_agent.py execution/terrain_generator.py execution/persistent_memory.py execution/sandbox_executor.py execution/llm_drl_bridge.py environment/masking_sensor.py environment/reward_shaper.py environment/action_mapper.py
-
-      - name: Ruff (code inspection)
-        run: ruff check . --output-format=github || true
-        continue-on-error: true
-
-      - name: Black (format inspection)
-        run: black --check . || true
-        continue-on-error: true
 
   # ── Unit & Integration Tests ───────────────────────────────────────────
   test:
@@ -69,8 +62,8 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
+          pip install --extra-index-url https://download.pytorch.org/whl/cpu torch
           pip install -r requirements.txt
-          pip install pytest pytest-cov
           pip install -e . --no-deps
 
       - name: Run test suite
